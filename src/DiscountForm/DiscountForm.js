@@ -17,6 +17,11 @@ const DiscountForm = (props) => {
     setIsValid(digit.length === 19 && code);
   }, [digit, code]);
 
+  useEffect(() => {
+    setDigit('');
+    setCode('');
+  }, [coupons]);
+
   const inputChangeHandler = value => {
     const trimmedValue = value.trim();
     if (regex.test(trimmedValue)) {
