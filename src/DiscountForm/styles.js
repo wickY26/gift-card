@@ -20,7 +20,7 @@ export const FlexWrapper = styled.div`
   margin: 10px 0;
 `;
 
-export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
+export const Checkbox = styled.input.attrs(() => ({ type: 'checkbox' }))`
   margin: 0 10px 0 0;
 `;
 
@@ -38,7 +38,7 @@ export const ErrorText = styled(LeanText)`
   color: #d61919;
 `;
 
-export const Input = styled.input.attrs({ type: 'text', placeholder: props => props.placeholder })`
+export const Input = styled.input.attrs(({ placeholder }) => ({ type: 'text', placeholder }))`
   border: 1px solid #CCCCCC;
   box-sizing: border-box;
   padding: 15px 10px;
@@ -51,7 +51,7 @@ export const InputDigit = styled(Input)`
   width: 310px;
 `;
 
-export const Button = styled.button.attrs({ disabled: props => !props.isActive })`
+export const Button = styled.button.attrs(({ isActive }) => ({ disabled: !isActive }))`
   background: #333333;
   cursor: ${props => props.isActive ? 'pointer' : 'not-allowed'};
   font-weight: bold;

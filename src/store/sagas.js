@@ -10,6 +10,7 @@ function* workerSaga({ digit, code }) {
   try {
     const response = yield call(() => axios(`http://localhost:4000/coupons?digit_like=${digit}&code_like=${code}`));
     const coupon = response.data[0];
+    // if there is a coupon just put it into state otherwise put error message
     if (coupon) {
       yield put({ type: actionTypes.VALIDATE_COUPON_SUCCESS, coupon });
     } else {

@@ -10,18 +10,28 @@ const DiscountForm = (props) => {
   const [digit, setDigit] = useState('');
   const [code, setCode] = useState('');
   const [isValid, setIsValid] = useState(false);
-
+  // from store
   const { fetching, coupons, error, onRequestCoupon } = props;
 
+  /**
+   * whenever digit or code is changed just set validity of form
+   */
   useEffect(() => {
     setIsValid(digit.length === 19 && code);
   }, [digit, code]);
 
+  /**
+   * whenever coupons are changed just reset form for next usage
+   */
   useEffect(() => {
     setDigit('');
     setCode('');
   }, [coupons]);
 
+  /**
+   * when trimmed(because of the copy paste) value change the regex
+   * it just set new value otherwise old value will be kept
+   */
   const inputChangeHandler = value => {
     const trimmedValue = value.trim();
     if (regex.test(trimmedValue)) {
